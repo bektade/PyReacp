@@ -9,7 +9,7 @@
 
 ## LeetCode Streaks
 
-[![](https://img.shields.io/static/v1?style=plastic&label=LeetCodeStreaks23&message=Link&color=blue%link=https://github.com/BeTKH/JupyterNotebooks/blob/master/LeetCodeStreak/LeetCodeSteak.ipynb)](https://github.com/BeTKH/JupyterNotebooks/blob/master/LeetCodeStreak/LeetCodeSteak.ipynb)
+[![](https://img.shields.io/static/v1?style=plastic&label=LeetCodeStreaks23&message=Link&color=blue%link=https://htmlpreview.github.io/?https://github.com/BeTKH/JupyterNotebooks/blob/master/LeetCodeStreak/LeetCodeSteak.html)](https://htmlpreview.github.io/?https://github.com/BeTKH/JupyterNotebooks/blob/master/LeetCodeStreak/LeetCodeSteak.html)
 
 
 
