@@ -15134,6 +15134,90 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
+</div><div id="cell-id=3c7c36ed" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ParkingSystem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="c1">#constructor</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">big</span><span class="p">,</span> <span class="n">medium</span><span class="p">,</span> <span class="n">small</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type big: int</span>
+<span class="sd">        :type medium: int</span>
+<span class="sd">        :type small: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">slots</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="n">big</span><span class="p">,</span>
+            <span class="mi">2</span><span class="p">:</span> <span class="n">medium</span><span class="p">,</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="n">small</span>
+        <span class="p">}</span>
+        
+
+    <span class="k">def</span> <span class="nf">addCar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">carType</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :type carType: int</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">[</span><span class="n">carType</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">[</span><span class="n">carType</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        
+
+
+
+
+<span class="c1">#input1 = [&quot;ParkingSystem&quot;, &quot;addCar&quot;, &quot;addCar&quot;, &quot;addCar&quot;, &quot;addCar&quot;]</span>
+<span class="n">input1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="c1"># init parking system with slots (big, mid, small) == (1, 1, 0)</span>
+<span class="n">parkingObj</span> <span class="o">=</span> <span class="n">ParkingSystem</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># returns true because there&#39;s one slot for big car</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there&#39;s lot for parking big car ? :&quot;</span><span class="p">,</span><span class="n">parkingObj</span><span class="o">.</span><span class="n">addCar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># returns true because there&#39;s one slot for mid car</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there&#39;s lot for parking mid car ? :&quot;</span><span class="p">,</span><span class="n">parkingObj</span><span class="o">.</span><span class="n">addCar</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># returns false because there&#39;s no slot for small car</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there&#39;s lot for parking mid car ? :&quot;</span><span class="p">,</span><span class="n">parkingObj</span><span class="o">.</span><span class="n">addCar</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>there&#39;s lot for parking big car ? : True
+there&#39;s lot for parking mid car ? : True
+there&#39;s lot for parking mid car ? : False
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div id="cell-id=22a0ccdd" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15233,15 +15317,149 @@ void remove(key) Removes the value key in the HashSet. If key does not exist in 
 </div>
 </div>
 
-</div><div id="cell-id=ad21c4ef" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div id="cell-id=d2d5f53f" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1396.-Design-Underground-System-(Not-solved-Yet)">1396. Design Underground System (<code>Not-solved Yet</code>)<a class="anchor-link" href="#1396.-Design-Underground-System-(Not-solved-Yet)">&#182;</a></h3><p><strong>Medium</strong> (<code>Bloomberg</code>, <code>Amazon</code>)</p>
+<p>An underground railway system is keeping track of customer travel times between different stations. They are using this data to calculate the average time it takes to travel from one station to another.</p>
+<p>Implement the <code>UndergroundSystem</code> class:</p>
+<ul>
+<li><p><code>void checkIn(int id, string stationName, int t)</code></p>
+<pre><code>  - A customer with a card ID equal to id, checks in at the station stationName at time t.
+  - A customer can only be checked into one place at a time.
+
+</code></pre>
+</li>
+<li><p><code>void checkOut(int id, string stationName, int t)</code></p>
+<pre><code>  - A customer with a card ID equal to id, checks out from the station stationName at time t.
+
+</code></pre>
+</li>
+<li><p><code>double getAverageTime(string startStation, string endStation)</code></p>
+<pre><code>  - Returns the average time it takes to travel from startStation to endStation.
+
+  - The average time is computed from all the previous traveling times from startStation to endStation that happened directly, meaning a check in at startStation followed by a check out from endStation.
+
+  - The time it takes to travel from startStation to endStation may be different from the time it takes to travel from endStation to startStation.
+
+  - There will be at least one customer that has traveled from startStation to endStation before getAverageTime is called.
+
+
+</code></pre>
+</li>
+</ul>
+<p>You may assume all calls to the <code>checkIn</code> and <code>checkOut</code> methods are consistent. If a customer checks in at time t1 then checks out at time t2, then t1 &lt; t2. All events happen in chronological order.</p>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=ec574011" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Example 1:</span>
+
+<span class="sd">Input</span>
+<span class="sd">[&quot;UndergroundSystem&quot;,&quot;checkIn&quot;,&quot;checkIn&quot;,&quot;checkIn&quot;,&quot;checkOut&quot;,&quot;checkOut&quot;,&quot;checkOut&quot;,&quot;getAverageTime&quot;,&quot;getAverageTime&quot;,&quot;checkIn&quot;,&quot;getAverageTime&quot;,&quot;checkOut&quot;,&quot;getAverageTime&quot;]</span>
+<span class="sd">[[],[45,&quot;Leyton&quot;,3],[32,&quot;Paradise&quot;,8],[27,&quot;Leyton&quot;,10],[45,&quot;Waterloo&quot;,15],[27,&quot;Waterloo&quot;,20],[32,&quot;Cambridge&quot;,22],[&quot;Paradise&quot;,&quot;Cambridge&quot;],[&quot;Leyton&quot;,&quot;Waterloo&quot;],[10,&quot;Leyton&quot;,24],[&quot;Leyton&quot;,&quot;Waterloo&quot;],[10,&quot;Waterloo&quot;,38],[&quot;Leyton&quot;,&quot;Waterloo&quot;]]</span>
+
+<span class="sd">Output</span>
+<span class="sd">[null,null,null,null,null,null,null,14.00000,11.00000,null,11.00000,null,12.00000]</span>
+
+<span class="sd">Explanation</span>
+<span class="sd">UndergroundSystem undergroundSystem = new UndergroundSystem();</span>
+<span class="sd">undergroundSystem.checkIn(45, &quot;Leyton&quot;, 3);</span>
+<span class="sd">undergroundSystem.checkIn(32, &quot;Paradise&quot;, 8);</span>
+<span class="sd">undergroundSystem.checkIn(27, &quot;Leyton&quot;, 10);</span>
+<span class="sd">undergroundSystem.checkOut(45, &quot;Waterloo&quot;, 15);  // Customer 45 &quot;Leyton&quot; -&gt; &quot;Waterloo&quot; in 15-3 = 12</span>
+<span class="sd">undergroundSystem.checkOut(27, &quot;Waterloo&quot;, 20);  // Customer 27 &quot;Leyton&quot; -&gt; &quot;Waterloo&quot; in 20-10 = 10</span>
+<span class="sd">undergroundSystem.checkOut(32, &quot;Cambridge&quot;, 22); // Customer 32 &quot;Paradise&quot; -&gt; &quot;Cambridge&quot; in 22-8 = 14</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Paradise&quot;, &quot;Cambridge&quot;); // return 14.00000. One trip &quot;Paradise&quot; -&gt; &quot;Cambridge&quot;, (14) / 1 = 14</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Leyton&quot;, &quot;Waterloo&quot;);    // return 11.00000. Two trips &quot;Leyton&quot; -&gt; &quot;Waterloo&quot;, (10 + 12) / 2 = 11</span>
+<span class="sd">undergroundSystem.checkIn(10, &quot;Leyton&quot;, 24);</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Leyton&quot;, &quot;Waterloo&quot;);    // return 11.00000</span>
+<span class="sd">undergroundSystem.checkOut(10, &quot;Waterloo&quot;, 38);  // Customer 10 &quot;Leyton&quot; -&gt; &quot;Waterloo&quot; in 38-24 = 14</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Leyton&quot;, &quot;Waterloo&quot;);    // return 12.00000. Three trips &quot;Leyton&quot; -&gt; &quot;Waterloo&quot;, (10 + 12 + 14) / 3 = 12</span>
+<span class="sd">Example 2:</span>
+
+<span class="sd">Input</span>
+<span class="sd">[&quot;UndergroundSystem&quot;,&quot;checkIn&quot;,&quot;checkOut&quot;,&quot;getAverageTime&quot;,&quot;checkIn&quot;,&quot;checkOut&quot;,&quot;getAverageTime&quot;,&quot;checkIn&quot;,&quot;checkOut&quot;,&quot;getAverageTime&quot;]</span>
+<span class="sd">[[],[10,&quot;Leyton&quot;,3],[10,&quot;Paradise&quot;,8],[&quot;Leyton&quot;,&quot;Paradise&quot;],[5,&quot;Leyton&quot;,10],[5,&quot;Paradise&quot;,16],[&quot;Leyton&quot;,&quot;Paradise&quot;],[2,&quot;Leyton&quot;,21],[2,&quot;Paradise&quot;,30],[&quot;Leyton&quot;,&quot;Paradise&quot;]]</span>
+
+<span class="sd">Output</span>
+<span class="sd">[null,null,null,5.00000,null,null,5.50000,null,null,6.66667]</span>
+
+<span class="sd">Explanation</span>
+<span class="sd">UndergroundSystem undergroundSystem = new UndergroundSystem();</span>
+<span class="sd">undergroundSystem.checkIn(10, &quot;Leyton&quot;, 3);</span>
+<span class="sd">undergroundSystem.checkOut(10, &quot;Paradise&quot;, 8); // Customer 10 &quot;Leyton&quot; -&gt; &quot;Paradise&quot; in 8-3 = 5</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Leyton&quot;, &quot;Paradise&quot;); // return 5.00000, (5) / 1 = 5</span>
+<span class="sd">undergroundSystem.checkIn(5, &quot;Leyton&quot;, 10);</span>
+<span class="sd">undergroundSystem.checkOut(5, &quot;Paradise&quot;, 16); // Customer 5 &quot;Leyton&quot; -&gt; &quot;Paradise&quot; in 16-10 = 6</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Leyton&quot;, &quot;Paradise&quot;); // return 5.50000, (5 + 6) / 2 = 5.5</span>
+<span class="sd">undergroundSystem.checkIn(2, &quot;Leyton&quot;, 21);</span>
+<span class="sd">undergroundSystem.checkOut(2, &quot;Paradise&quot;, 30); // Customer 2 &quot;Leyton&quot; -&gt; &quot;Paradise&quot; in 30-21 = 9</span>
+<span class="sd">undergroundSystem.getAverageTime(&quot;Leyton&quot;, &quot;Paradise&quot;); // return 6.66667, (5 + 6 + 9) / 3 = 6.66667</span>
+
+<span class="sd">Constraints:</span>
+
+<span class="sd">1 &lt;= id, t &lt;= 106</span>
+<span class="sd">1 &lt;= stationName.length, startStation.length, endStation.length &lt;= 10</span>
+<span class="sd">All strings consist of uppercase and lowercase English letters and digits.</span>
+<span class="sd">There will be at most 2 * 104 calls in total to checkIn, checkOut, and getAverageTime.</span>
+<span class="sd">Answers within 10-5 of the actual value will be accepted.</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+
+<span class="k">class</span> <span class="nc">UndergroundSystem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_ins</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Stores check-in information {id: (station, time)}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">travel_times</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Stores travel times {(start_station, end_station): [travel_time1, travel_time2, ...]}</span>
+        
+
+    <span class="k">def</span> <span class="nf">checkIn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">stationName</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_ins</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stationName</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">checkOut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">stationName</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">start_station</span><span class="p">,</span> <span class="n">start_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_ins</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+        <span class="n">end_station</span> <span class="o">=</span> <span class="n">stationName</span>
+        <span class="n">travel_time</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">start_time</span>
+        
+        <span class="c1"># Update travel times dictionary</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">start_station</span><span class="p">,</span> <span class="n">end_station</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">travel_times</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">travel_times</span><span class="p">[(</span><span class="n">start_station</span><span class="p">,</span> <span class="n">end_station</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">travel_time</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">travel_times</span><span class="p">[(</span><span class="n">start_station</span><span class="p">,</span> <span class="n">end_station</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">travel_time</span><span class="p">]</span>
+        
+        <span class="c1"># Remove check-in record</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_ins</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">getAverageTime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">startStation</span><span class="p">,</span> <span class="n">endStation</span><span class="p">):</span>
+        <span class="n">travel_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">travel_times</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">startStation</span><span class="p">,</span> <span class="n">endStation</span><span class="p">),</span> <span class="p">[])</span>
+        <span class="n">average_time</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">travel_times</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">travel_times</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">average_time</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        
+
+
+
+<span class="c1"># Your UndergroundSystem object will be instantiated and called as such:</span>
+<span class="c1"># obj = UndergroundSystem()</span>
+<span class="c1"># obj.checkIn(id,stationName,t)</span>
+<span class="c1"># obj.checkOut(id,stationName,t)</span>
+<span class="c1"># param_3 = obj.getAverageTime(startStation,endStation)</span>
 </pre></div>
 
      </div>
@@ -15249,7 +15467,124 @@ void remove(key) Removes the value key in the HashSet. If key does not exist in 
 </div>
 </div>
 
-</div><div id="cell-id=ec574011" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div id="cell-id=5d48c32b" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="1091.-Shortest-Path-in-Binary-Matrix">1091. Shortest Path in Binary Matrix<a class="anchor-link" href="#1091.-Shortest-Path-in-Binary-Matrix">&#182;</a></h4><p><strong>Medium</strong> (<code>Facebook</code> <code>Amazon</code> <code>Google</code>)</p>
+<p>Given an <code>n x n</code> binary matrix <code>grid</code>, return the length of the shortest clear path in the matrix. If there is no clear path, return <code>-1</code>.</p>
+<p>A <strong>clear path</strong> in a binary matrix is a path from the <strong>top-left</strong> cell (i.e., <code>(0, 0)</code>) to the bottom-right cell (i.e., (<code>n - 1, n - 1</code>)) such that:</p>
+<pre><code>- All the visited cells of the path are `0`.
+- All the adjacent cells of the path are 8-directionally connected (i.e., they are different and they share an edge or a corner).
+
+</code></pre>
+<p>The <strong>length of a clear path</strong> is the number of visited cells of this path.</p>
+<p><strong>Example-1</strong></p>
+<p><img src="img/shortestPath1.png" alt="title" /></p>
+<p><code>Input: grid = [[0,1],[1,0]]</code></p>
+<p><code>Output: 2</code></p>
+<p><strong>Example-2</strong></p>
+<p><img src="img/shortestPath2.png" alt="title" /></p>
+<p><code>Input: grid = [[0,0,0],[1,1,0],[1,1,0]]</code></p>
+<p><code>Output: 4</code></p>
+<p><strong>Example-3</strong></p>
+<p><code>Input: grid = [[1,0,0],[1,1,0],[1,1,0]]</code></p>
+<p><code>Output: -1</code></p>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=2ef10e5d" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Constraints:</span>
+
+<span class="sd">n == grid.length</span>
+<span class="sd">n == grid[i].length</span>
+<span class="sd">1 &lt;= n &lt;= 100</span>
+<span class="sd">grid[i][j] is 0 or 1</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">shortestPathBinaryMatrix</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :type grid: List[List[int]]</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">grid</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">distance</span>
+            <span class="k">for</span> <span class="n">dr</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">dc</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">new_row</span><span class="p">,</span> <span class="n">new_col</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">col</span> <span class="o">+</span> <span class="n">dc</span>
+                    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">new_row</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">new_col</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="p">(</span><span class="n">new_row</span><span class="p">,</span> <span class="n">new_col</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span> <span class="ow">and</span> <span class="n">grid</span><span class="p">[</span><span class="n">new_row</span><span class="p">][</span><span class="n">new_col</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_row</span><span class="p">,</span> <span class="n">new_col</span><span class="p">))</span>
+                        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">new_row</span><span class="p">,</span> <span class="n">new_col</span><span class="p">))</span>
+        <span class="n">distance</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">grid1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">grid2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">grid3</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sortest path is: &quot;</span><span class="p">,</span><span class="n">shortestPathBinaryMatrix</span><span class="p">(</span><span class="n">grid1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sortest path is: &quot;</span><span class="p">,</span><span class="n">shortestPathBinaryMatrix</span><span class="p">(</span><span class="n">grid2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sortest path is: &quot;</span><span class="p">,</span><span class="n">shortestPathBinaryMatrix</span><span class="p">(</span><span class="n">grid3</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>sortest path is:  2
+sortest path is:  4
+sortest path is:  -1
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div id="cell-id=6f02bc7b" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
