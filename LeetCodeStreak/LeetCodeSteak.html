@@ -15801,6 +15801,111 @@ The best bomb to detonate is bomb 0 because:</p>
 </div>
 
 </div>
+<div id="cell-id=18178218" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1502.-Can-Make-Arithmetic-Progression-From-Sequence">1502. Can Make Arithmetic Progression From Sequence<a class="anchor-link" href="#1502.-Can-Make-Arithmetic-Progression-From-Sequence">&#182;</a></h3><p><strong>easy</strong> <code>Amazon</code></p>
+<p>A sequence of numbers is called an arithmetic progression if the difference between any two consecutive elements is the same.</p>
+<p>Given an array of numbers arr, return true if the array can be rearranged to form an arithmetic progression. Otherwise, return false</p>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=464ae5ff" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Example 1:</span>
+
+<span class="sd">Input: arr = [3,5,1]</span>
+<span class="sd">Output: true</span>
+<span class="sd">Explanation: We can reorder the elements as [1,3,5] or [5,3,1] with differences 2 and -2 respectively, between each consecutive elements.</span>
+<span class="sd">Example 2:</span>
+
+<span class="sd">Input: arr = [1,2,4]</span>
+<span class="sd">Output: false</span>
+<span class="sd">Explanation: There is no way to reorder the elements to obtain an arithmetic progression.</span>
+<span class="sd"> </span>
+
+<span class="sd">Constraints:</span>
+
+<span class="sd">2 &lt;= arr.length &lt;= 1000</span>
+<span class="sd">-106 &lt;= arr[i] &lt;= 106</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">canMakeArithmeticProgression</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :type arr: List[int]</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">arr</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">diff</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">-</span> <span class="n">last</span> <span class="o">!=</span> <span class="n">diff</span> <span class="p">:</span> 
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+    
+    
+<span class="n">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># True</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>  <span class="c1">#False</span>
+<span class="n">arr3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span> <span class="c1">#True</span>
+<span class="n">arr4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>  <span class="c1">#True</span>
+<span class="n">arr5</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>  <span class="c1">#False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">canMakeArithmeticProgression</span><span class="p">(</span><span class="n">arr1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">canMakeArithmeticProgression</span><span class="p">(</span><span class="n">arr2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">canMakeArithmeticProgression</span><span class="p">(</span><span class="n">arr3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">canMakeArithmeticProgression</span><span class="p">(</span><span class="n">arr4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">canMakeArithmeticProgression</span><span class="p">(</span><span class="n">arr5</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>True
+False
+True
+True
+False
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
 </body>
 
 
