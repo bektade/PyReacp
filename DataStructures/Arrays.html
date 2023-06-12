@@ -16980,6 +16980,125 @@ Return the absolute difference between the element sum and digit sum of nums.</p
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1656.-Design-an-Ordered-Stream">1656. Design an Ordered Stream<a class="anchor-link" href="#1656.-Design-an-Ordered-Stream">&#182;</a></h3><p>Easy Bloomberg</p>
+<p>There is a stream of n (idKey, value) pairs arriving in an arbitrary order, where idKey is an integer between 1 and n and value is a string. No two pairs have the same id.</p>
+<p>Design a stream that returns the values in increasing order of their IDs by returning a chunk (list) of values after each insertion. The concatenation of all the chunks should result in a list of the sorted values.</p>
+<p>Implement the OrderedStream class:</p>
+<p>OrderedStream(int n) Constructs the stream to take n values.
+String[] insert(int idKey, String value) Inserts the pair (idKey, value) into the stream, then returns the largest possible chunk of currently inserted values that appear next in the order.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">Input</span>
+<span class="sd">["OrderedStream", "insert", "insert", "insert", "insert", "insert"]</span>
+<span class="sd">[[5], [3, "ccccc"], [1, "aaaaa"], [2, "bbbbb"], [5, "eeeee"], [4, "ddddd"]]</span>
+<span class="sd">Output</span>
+<span class="sd">[null, [], ["aaaaa"], ["bbbbb", "ccccc"], [], ["ddddd", "eeeee"]]</span>
+
+<span class="sd">Explanation</span>
+<span class="sd">// Note that the values ordered by ID is ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"].</span>
+<span class="sd">OrderedStream os = new OrderedStream(5);</span>
+<span class="sd">os.insert(3, "ccccc"); // Inserts (3, "ccccc"), returns [].</span>
+<span class="sd">os.insert(1, "aaaaa"); // Inserts (1, "aaaaa"), returns ["aaaaa"].</span>
+<span class="sd">os.insert(2, "bbbbb"); // Inserts (2, "bbbbb"), returns ["bbbbb", "ccccc"].</span>
+<span class="sd">os.insert(5, "eeeee"); // Inserts (5, "eeeee"), returns [].</span>
+<span class="sd">os.insert(4, "ddddd"); // Inserts (4, "ddddd"), returns ["ddddd", "eeeee"].</span>
+<span class="sd">// Concatentating all the chunks returned:</span>
+<span class="sd">// [] + ["aaaaa"] + ["bbbbb", "ccccc"] + [] + ["ddddd", "eeeee"] = ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"]</span>
+<span class="sd">// The resulting order is the same as the order above.</span>
+<span class="sd">"""</span>
+
+
+<span class="k">class</span> <span class="nc">OrderedStream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        :type n: int</span>
+<span class="sd">        """</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>  <span class="c1"># Array to store the values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Pointer to the current position in the result array</span>
+
+        
+
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idKey</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        :type idKey: int</span>
+<span class="sd">        :type value: str</span>
+<span class="sd">        :rtype: List[str]</span>
+<span class="sd">        """</span>
+
+        <span class="n">idKey</span> <span class="o">-=</span> <span class="mi">1</span>  <span class="c1"># Convert 1-indexed ID to 0-indexed array index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">idKey</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>  <span class="c1"># Store the value at the corresponding index</span>
+
+        <span class="n">chunk</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># List to store the chunk of values</span>
+
+        <span class="k">if</span> <span class="n">idKey</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span><span class="p">:</span>
+            <span class="c1"># If the current value is the next available position in the result array</span>
+            <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ptr</span><span class="p">]:</span>
+                <span class="c1"># Add values from the current position up to the next available position</span>
+                <span class="n">chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ptr</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ptr</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">chunk</span>
+    
+    
+<span class="n">os</span> <span class="o">=</span> <span class="n">OrderedStream</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"ccccc"</span><span class="p">)</span> <span class="c1">#/ Inserts (3, "ccccc"), returns [].</span>
+<span class="n">os</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"aaaaa"</span><span class="p">)</span> <span class="c1">#Inserts (1, "aaaaa"), returns ["aaaaa"].</span>
+<span class="n">os</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"bbbbb"</span><span class="p">)</span> <span class="c1"># Inserts (2, "bbbbb"), returns ["bbbbb", "ccccc"].</span>
+<span class="n">os</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"eeeee"</span><span class="p">)</span> <span class="c1"># Inserts (5, "eeeee"), returns [].</span>
+<span class="n">os</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"ddddd"</span><span class="p">)</span> <span class="c1"># Inserts (4, "ddddd"), returns ["ddddd", "eeeee"].</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[&#39;ddddd&#39;, &#39;eeeee&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
