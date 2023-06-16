@@ -17182,7 +17182,7 @@ String[] insert(int idKey, String value) Inserts the pair (idKey, value) into th
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
@@ -17264,6 +17264,129 @@ String[] insert(int idKey, String value) Inserts the pair (idKey, value) into th
 
 </div>
 
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="768.-Merge-Strings-Alternately">768. Merge Strings Alternately<a class="anchor-link" href="#768.-Merge-Strings-Alternately">&#182;</a></h3><p>Easy  | Amazon Google Uber
+You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.</p>
+<p>Return the merged string.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">Example 1:</span>
+
+<span class="sd">Input: word1 = "abc", word2 = "pqr"</span>
+<span class="sd">Output: "apbqcr"</span>
+<span class="sd">Explanation: The merged string will be merged as so:</span>
+<span class="sd">word1:  a   b   c</span>
+<span class="sd">word2:    p   q   r</span>
+<span class="sd">merged: a p b q c r</span>
+<span class="sd">Example 2:</span>
+
+<span class="sd">Input: word1 = "ab", word2 = "pqrs"</span>
+<span class="sd">Output: "apbqrs"</span>
+<span class="sd">Explanation: Notice that as word2 is longer, "rs" is appended to the end.</span>
+<span class="sd">word1:  a   b </span>
+<span class="sd">word2:    p   q   r   s</span>
+<span class="sd">merged: a p b q   r   s</span>
+<span class="sd">Example 3:</span>
+
+<span class="sd">Input: word1 = "abcd", word2 = "pq"</span>
+<span class="sd">Output: "apbqcd"</span>
+<span class="sd">Explanation: Notice that as word1 is longer, "cd" is appended to the end.</span>
+<span class="sd">word1:  a   b   c   d</span>
+<span class="sd">word2:    p   q </span>
+<span class="sd">merged: a p b q c   d</span>
+<span class="sd"> </span>
+
+<span class="sd">Constraints:</span>
+
+<span class="sd">1 &lt;= word1.length, word2.length &lt;= 100</span>
+<span class="sd">word1 and word2 consist of lowercase English letters.</span>
+
+<span class="sd">"""</span>
+
+
+<span class="k">def</span> <span class="nf">mergeAlternately</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">):</span>
+        <span class="n">merged</span> <span class="o">+=</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">merged</span> <span class="o">+=</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">merged</span> <span class="o">+=</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>  <span class="c1"># Append remaining characters from word1</span>
+    <span class="n">merged</span> <span class="o">+=</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="p">:]</span>  <span class="c1"># Append remaining characters from word2</span>
+
+    <span class="k">return</span> <span class="n">merged</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">word1</span> <span class="o">=</span> <span class="s2">"abc"</span>
+<span class="n">word2</span> <span class="o">=</span> <span class="s2">"pqr"</span>
+<span class="n">merged_string</span> <span class="o">=</span> <span class="n">mergeAlternately</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">merged_string</span><span class="p">)</span>  <span class="c1"># Output: "apbqcr"</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>apbqcr
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div>
