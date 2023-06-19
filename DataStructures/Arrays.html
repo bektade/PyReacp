@@ -17494,7 +17494,7 @@ Return the maximum number of balanced strings you can obtain.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
@@ -17573,6 +17573,122 @@ Return the maximum number of balanced strings you can obtain.</p>
 
 </div>
 
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1832.-Check-if-the-Sentence-Is-Pangram">1832. Check if the Sentence Is Pangram<a class="anchor-link" href="#1832.-Check-if-the-Sentence-Is-Pangram">&#182;</a></h3><p><strong>Easy</strong>  | <code>Google</code> <code>Bloomberg</code> <code>Goldman Sachs</code></p>
+<p>A <code>pangram</code> is a sentence where every letter of the English alphabet appears at least once.</p>
+<p>Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">Example 1:</span>
+
+<span class="sd">Input: sentence = "thequickbrownfoxjumpsoverthelazydog"</span>
+<span class="sd">Output: true</span>
+<span class="sd">Explanation: sentence contains at least one of every letter of the English alphabet.</span>
+<span class="sd">Example 2:</span>
+
+<span class="sd">Input: sentence = "leetcode"</span>
+<span class="sd">Output: false</span>
+<span class="sd"> </span>
+
+<span class="sd">Constraints:</span>
+
+<span class="sd">1 &lt;= sentence.length &lt;= 1000</span>
+<span class="sd">sentence consists of lowercase English letters.</span>
+<span class="sd">"""</span>
+
+
+
+<span class="k">def</span> <span class="nf">checkIfPangram</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    :type sentence: str</span>
+<span class="sd">    :rtype: bool</span>
+<span class="sd">    """</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="s2">"abcdefghijklmnopqrstuvwxyz"</span>
+
+    <span class="n">alphaSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">inputSet</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">alphaSet</span> <span class="o">==</span> <span class="n">inputSet</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+        
+
+        
+        
+<span class="n">s1</span> <span class="o">=</span> <span class="s2">"thequickbrownfoxjumpsoverthelazydog"</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">"leetcode"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">checkIfPangram</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">checkIfPangram</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>True
+False
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div>
