@@ -15551,7 +15551,7 @@ Therefore, the overall time complexity is <code>O(n)</code>.</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
@@ -15642,6 +15642,276 @@ Therefore, the overall time complexity is <code>O(n)</code>.</li>
 <pre>[-1, -1, -1, -1, -1, -1, -1, -1, -1]
 [-1]
 [100000]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1232.-Check-If-It-Is-a-Straight-Line">1232. Check If It Is a Straight Line<a class="anchor-link" href="#1232.-Check-If-It-Is-a-Straight-Line">&#182;</a></h3><p><strong>Easy</strong> | <code>Amazon</code> <code>Palantir Technologies</code>
+You are given an array coordinates, coordinates <code>[i]</code> = <code>[x, y]</code>, where <code>[x, y]</code> represents the coordinate of a point. Check if these points make a straight line in the XY plane.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">Input: coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]</span>
+<span class="sd">Output: true</span>
+<span class="sd">Example 2:</span>
+
+
+<span class="sd">Input: coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]</span>
+<span class="sd">Output: false</span>
+
+<span class="sd">"""</span>
+
+<span class="k">def</span> <span class="nf">checkStraightLine</span><span class="p">(</span><span class="n">coordinates</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        :type coordinates: List[List[int]]</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+
+        <span class="c1">#calculate the first slope</span>
+
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            
+        <span class="n">y0</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+        
+        <span class="c1">#case for zero division - vertical line </span>
+        <span class="n">zeroD</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span>
+        <span class="k">if</span>  <span class="n">zeroD</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span><span class="n">y0</span><span class="p">)</span> <span class="o">/</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span><span class="n">x0</span><span class="p">)</span>
+
+        <span class="n">res_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    
+            <span class="n">x0</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">x1</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="n">y0</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">y1</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+
+            <span class="n">zeroD</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span>
+
+            <span class="k">if</span> <span class="n">zeroD</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span><span class="n">x0</span><span class="p">)</span>
+
+            <span class="n">res_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span> <span class="o">==</span><span class="n">m1</span><span class="p">)</span> 
+
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">res_list</span><span class="p">)</span>
+
+
+<span class="n">coordinates1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
+<span class="n">coordinates2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">checkStraightLine</span><span class="p">(</span><span class="n">coordinates1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">checkStraightLine</span><span class="p">(</span><span class="n">coordinates2</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>True
+False
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2328.-Number-of-Increasing-Paths-in-a-Grid">2328. Number of Increasing Paths in a Grid<a class="anchor-link" href="#2328.-Number-of-Increasing-Paths-in-a-Grid">&#182;</a></h3><p><strong>Hard</strong> | <code>Adobe</code></p>
+<p>You are given an <code>m x n</code> integer matrix grid, where you can move from a cell to any adjacent cell in all <code>4</code> directions.</p>
+<p>Return the number of strictly increasing paths in the grid such that you can start from any cell and end at any cell. Since the answer may be very large, return it modulo <code>109 + 7</code>.</p>
+<p>Two paths are considered different if they do not have exactly the same sequence of visited cells.</p>
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h4><h4 id="Intuition:">Intuition:<a class="anchor-link" href="#Intuition:">&#182;</a></h4><p>The problem asks for the <code>number of strictly increasing paths</code> in a grid, where you can move from a cell to any adjacent cell in all four directions. The goal is to <code>find the count of such paths</code> from any starting cell to any ending cell.</p>
+<h4 id="Approach:">Approach:<a class="anchor-link" href="#Approach:">&#182;</a></h4><p>Using a<code>depth-first search (DFS)</code> with <code>memoization</code> to count the number of strictly increasing paths. It defines a recursive function dfs that takes the current cell indices as parameters.</p>
+<ol>
+<li><p>Initialize the dimensions of the grid, m and n, and the modulo value, mod.</p>
+</li>
+<li><p>Create a 2D dp matrix of size m x n and initialize all its values to 0. This matrix will store the counts of strictly increasing paths for each cell.</p>
+</li>
+<li><p>Define a recursive function, dfs, that takes the current cell indices (i and j) as parameters and returns the count of strictly increasing paths from that cell.</p>
+</li>
+<li><p>Within the dfs function:</p>
+<ul>
+<li><p>Check if the count for the current cell is already calculated and stored in the dp matrix. If so, return the stored count.</p>
+</li>
+<li><p>Otherwise, initialize the count as 1, since the current cell itself is a valid path.</p>
+</li>
+</ul>
+</li>
+<li><p>Explore all four neighboring cells (up, down, left, and right) from the current cell:</p>
+<ul>
+<li><p>For each neighbor, check if it is within the grid boundaries (0 &lt;= x &lt; m and 0 &lt;= y &lt; n) and if its value is greater than the value of the current cell.</p>
+<ul>
+<li>If the conditions are met, recursively call the dfs function for the neighboring cell and add the returned count to the current count.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>After calculating the count for the current cell, store it in the dp matrix at the corresponding indices.</p>
+</li>
+<li><p>Return the count for the current cell.</p>
+</li>
+<li><p>In the main function, initialize totalPaths as 0, which will store the total count of strictly increasing paths.</p>
+</li>
+<li><p>Iterate over all cells in the grid using nested loops:</p>
+<ul>
+<li>For each cell, call the dfs function to calculate the count of strictly increasing paths starting from that cell.</li>
+<li>Add the returned count to the totalPaths variable, taking the modulo (mod) at each step.</li>
+</ul>
+</li>
+<li><p>Finally, return the totalPaths, which represents the total number of strictly increasing paths in the grid.</p>
+</li>
+</ol>
+<h4 id="Complexity:">Complexity:<a class="anchor-link" href="#Complexity:">&#182;</a></h4><p>Time complexity: The code visits each cell in the grid once and performs a constant amount of work for each cell. Therefore, the time complexity is <code>O(m * n)</code>, where m is the number of rows and n is the number of columns in the grid.</p>
+<p>Space complexity: The code uses an additional dp matrix of size <code>m x n</code> to store the counts for each cell. Therefore, the space complexity is <code>O(m * n)</code>.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">Input: grid = [[1,1],[3,4]]</span>
+<span class="sd">Output: 8</span>
+<span class="sd">Explanation: The strictly increasing paths are:</span>
+<span class="sd">- Paths with length 1: [1], [1], [3], [4].</span>
+<span class="sd">- Paths with length 2: [1 -&gt; 3], [1 -&gt; 4], [3 -&gt; 4].</span>
+<span class="sd">- Paths with length 3: [1 -&gt; 3 -&gt; 4].</span>
+<span class="sd">The total number of paths is 4 + 3 + 1 = 8.</span>
+<span class="sd">Example 2:</span>
+
+<span class="sd">Input: grid = [[1],[2]]</span>
+<span class="sd">Output: 3</span>
+<span class="sd">Explanation: The strictly increasing paths are:</span>
+<span class="sd">- Paths with length 1: [1], [2].</span>
+<span class="sd">- Paths with length 2: [1 -&gt; 2].</span>
+<span class="sd">The total number of paths is 2 + 1 = 3.</span>
+
+<span class="sd">"""</span>
+
+
+<span class="k">def</span> <span class="nf">countPaths</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    :type grid: List[List[int]]</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    """</span>
+
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e9</span><span class="p">)</span> <span class="o">+</span> <span class="mi">7</span>
+
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">dy</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">%</span> <span class="n">mod</span>
+
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="n">totalPaths</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">totalPaths</span> <span class="o">=</span> <span class="p">(</span><span class="n">totalPaths</span> <span class="o">+</span> <span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span> <span class="o">%</span> <span class="n">mod</span>
+
+    <span class="k">return</span> <span class="n">totalPaths</span>
+
+
+<span class="n">grid1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
+<span class="n">grid2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">countPaths</span><span class="p">(</span><span class="n">grid1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">countPaths</span><span class="p">(</span><span class="n">grid2</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>8
+3
 </pre>
 </div>
 </div>
