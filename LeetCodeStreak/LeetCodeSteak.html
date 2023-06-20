@@ -15419,7 +15419,7 @@ The additional space used by the algorithm is the <code>altGains</code> list, wh
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
@@ -15476,6 +15476,172 @@ The additional space used by the algorithm is the <code>altGains</code> list, wh
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>1
 0
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2090.-K-Radius-Subarray-Averages">2090. K Radius Subarray Averages<a class="anchor-link" href="#2090.-K-Radius-Subarray-Averages">&#182;</a></h2><p><strong>Medium</strong> | <code>Facebook</code> <code>Duolingo</code></p>
+<p>You are given a <code>0</code>-indexed array nums of <code>n</code> integers, and an integer <code>k</code>.</p>
+<p>The <code>k-radius average</code> for a subarray of nums centered at some index <code>i</code> with the radius <code>k</code> is the average of all elements in nums between the indices <code>i - k</code> and <code>i + k</code> (inclusive). If there are <strong>less</strong> than <code>k</code> elements before or after the index <code>i</code>, then the <code>k-radius</code> average is <code>-1</code>.</p>
+<p>Build and return an array avgs of length <code>n</code> where <code>avgs[i]</code> is the <code>k-radius</code> average for the subarray centered at index <code>i</code>.</p>
+<p>The average of <code>x</code> elements is the sum of the <code>x</code> elements divided by <code>x</code>, using integer division. The integer division truncates toward zero, which means losing its fractional part.</p>
+<p>For example, the average of four elements <code>2, 3, 1,</code> and <code>5</code> is <code>(2 + 3 + 1 + 5) / 4 = 11 / 4 = 2.75,</code> which truncates to <code>2</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Intuition">Intuition<a class="anchor-link" href="#Intuition">&#182;</a></h3><p>To find the <code>k-radius</code> average for each subarray centered at index <code>i</code>, we can calculate the sum of the subarray using <code>prefix sums</code>. By maintaining the prefix sums array, we can obtain the sum of any subarray in <strong>constant time</strong>. Then, we divide the sum by the number of elements in the subarray to obtain the average.</p>
+<h3 id="Approach">Approach<a class="anchor-link" href="#Approach">&#182;</a></h3><ol>
+<li>Create an array avgs of length n to store the <code>k-radius</code> averages. Initialize all elements in avgs to <code>-1</code>.</li>
+<li>Create a prefix sums array prefix_sums of <code>length n+1</code>. Initialize <code>prefix_sums[0]</code> to <code>0</code>.</li>
+<li>Calculate the prefix sums by iterating over the input array nums from index <code>1</code> to <code>n</code>. For each index <code>i</code>, set <code>prefix_sums[i]</code> to <code>prefix_sums[i-1]</code> + <code>nums[i-1]</code>. This step allows us to obtain the sum of any subarray using prefix sums.</li>
+<li>Iterate over each index i in the range from 0 to <code>n-1</code>:</li>
+</ol>
+<ul>
+<li>Calculate the left and right boundaries of the subarray centered at index i with radius <code>k</code>. The left boundary is <code>max(0, i-k)</code> and the right boundary is <code>min(n, i+k+1)</code>.</li>
+<li>Calculate the count of elements in the subarray, which is <code>right</code> - <code>left</code></li>
+<li>If the count is greater than or equal to <code>2k+1</code>, it means the subarray has enough elements to calculate the average:<ul>
+<li>Calculate the sum of the subarray using prefix sums: <code>prefix_sums[right]</code> - <code>prefix_sums[left]</code>.</li>
+<li>Divide the sum by the count to obtain the average.</li>
+<li>Set <code>avgs[i]</code> to the average.</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>Return the avgs array.</li>
+</ol>
+<h3 id="Complexity">Complexity<a class="anchor-link" href="#Complexity">&#182;</a></h3><ul>
+<li><strong>Time complexity:</strong><ul>
+<li>Constructing the prefix sums array takes <code>O(n)</code> time.
+Calculating the k-radius averages takes <code>O(n)</code> time since we iterate over each index once and perform constant time operations for each index.
+Therefore, the overall time complexity is <code>O(n)</code>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Space complexity:</strong><ul>
+<li>We use additional space to store the avgs array and the prefix sums array, both of which have a length of <code>n</code>. Thus, the space complexity is <code>O(n)</code>. </li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
+<span class="sd">Input: nums = [7,4,3,9,1,8,5,2,6], k = 3</span>
+<span class="sd">Output: [-1,-1,-1,5,4,4,-1,-1,-1]</span>
+<span class="sd">Explanation:</span>
+<span class="sd">- avg[0], avg[1], and avg[2] are -1 because there are less than k elements before each index.</span>
+<span class="sd">- The sum of the subarray centered at index 3 with radius 3 is: 7 + 4 + 3 + 9 + 1 + 8 + 5 = 37.</span>
+<span class="sd">  Using integer division, avg[3] = 37 / 7 = 5.</span>
+<span class="sd">- For the subarray centered at index 4, avg[4] = (4 + 3 + 9 + 1 + 8 + 5 + 2) / 7 = 4.</span>
+<span class="sd">- For the subarray centered at index 5, avg[5] = (3 + 9 + 1 + 8 + 5 + 2 + 6) / 7 = 4.</span>
+<span class="sd">- avg[6], avg[7], and avg[8] are -1 because there are less than k elements after each index.</span>
+<span class="sd">Example 2:</span>
+
+<span class="sd">Input: nums = [100000], k = 0</span>
+<span class="sd">Output: [100000]</span>
+<span class="sd">Explanation:</span>
+<span class="sd">- The sum of the subarray centered at index 0 with radius 0 is: 100000.</span>
+<span class="sd">  avg[0] = 100000 / 1 = 100000.</span>
+<span class="sd">Example 3:</span>
+
+<span class="sd">Input: nums = [8], k = 100000</span>
+<span class="sd">Output: [-1]</span>
+<span class="sd">Explanation: </span>
+<span class="sd">- avg[0] is -1 because there are less than k elements before and after index 0.</span>
+<span class="sd">"""</span>
+
+
+<span class="k">def</span> <span class="nf">getAverages</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    :type nums: List[int]</span>
+<span class="sd">    :type k: int</span>
+<span class="sd">    :rtype: List[int]</span>
+<span class="sd">    """</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">avgs</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+    <span class="n">prefix_sums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">prefix_sums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefix_sums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">k</span><span class="p">)</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">avgs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">prefix_sums</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">-</span> <span class="n">prefix_sums</span><span class="p">[</span><span class="n">left</span><span class="p">])</span> <span class="o">//</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">avgs</span>
+
+
+
+<span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">k2</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">k2</span> <span class="o">=</span> <span class="mi">100000</span>
+
+<span class="n">nums3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100000</span><span class="p">]</span>
+<span class="n">k3</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">getAverages</span><span class="p">(</span><span class="n">nums1</span><span class="p">,</span> <span class="n">k1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getAverages</span><span class="p">(</span><span class="n">nums2</span><span class="p">,</span> <span class="n">k2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getAverages</span><span class="p">(</span><span class="n">nums3</span><span class="p">,</span> <span class="n">k3</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[-1, -1, -1, -1, -1, -1, -1, -1, -1]
+[-1]
+[100000]
 </pre>
 </div>
 </div>
