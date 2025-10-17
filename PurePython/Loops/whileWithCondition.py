@@ -6,3 +6,4 @@ while (j <= len(numList) and numList[j] != 70 ):
 	print("current j :", j)
 
 print("stopped at j:", j)
+print("end of line")
