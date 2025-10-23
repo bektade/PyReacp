@@ -17,4 +17,11 @@ while i < len(thislist):
   i = i + 1
 
 
-[print(x) for x in thislist]
+# list comprehension
+
+thislist = [1, 3, 5, 7, 11]
+
+
+x = [x**2 for x in thislist]
+
+print(x)
