@@ -6,7 +6,7 @@
 
 	filter()
 	map()
-	reduce()
+	reduce()   - may not be supported on latest pythpon versions!!!!
 
 
 """
