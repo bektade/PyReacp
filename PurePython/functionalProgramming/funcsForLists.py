@@ -20,6 +20,17 @@ def cubeIT(x) : return x**3
 def add(x, y) : return x + y
 
 
+def reduce(ls) :
+	res = 0
+	for x in range(0, len(ls)):
+		print(x, ls[x])
+		
+		res = res + ls[x]
+
+		
+	return res
+
+
 
 
 #### FILTER!!!!!
@@ -40,7 +51,7 @@ print(list(rezMAP))
 
 
 ##### REDUCE!!!
-
-rezREDUCE = reduce(add, range(1, 11))
-print(list(rezREDUCE))
+lala = [10,11,13]
+rezREDUCE = reduce(lala)
+print("redue",rezREDUCE)
 
