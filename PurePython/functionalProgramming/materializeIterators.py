@@ -2,6 +2,8 @@
 
 Materialize Iterators :
 
+https://docs.python.org/3/howto/functional.html#iterators
+
   - materialize => bring out conent to view or use
 
   - means getting a list or tuple from iterator object
