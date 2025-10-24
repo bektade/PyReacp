@@ -6,7 +6,7 @@ https://docs.python.org/3/howto/functional.html#iterators
 
   - materialize => bring out conent to view or use
 
-  - means getting a list or tuple from iterator object
+  - means getting a list or tuple from iterator git object
   - use list() or tuple() constructor function to materialize
   - dict() can't be used to materialize!!
 
