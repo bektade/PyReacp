@@ -12,6 +12,9 @@ Iterator:
 
 
 
+Python expects Iterables in :
+  - for statments : for x in Y => Y must be iterable!
+
 """
 
 
